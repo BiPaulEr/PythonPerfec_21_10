@@ -8,6 +8,10 @@ async def read_file(file_name):
     return(f"Contents of {file_name}")
     
 
+def print_result(task):
+    if task.done():
+        print(task.result())
+
 async def main():
     for task in asyncio.as_completed([read_file(file) for file in ["data/file1.txt", "data/file2.txt", "data/file3.txt"]]):
         result = await task
